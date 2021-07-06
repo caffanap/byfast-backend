@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PacketCategory extends Model
+class Packet extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
 
-    public function packets()
+    public function category()
     {
-        return $this->hasMany(Packet::class);
+        return $this->belongsTo(PacketCategory::class, 'packet_category_id');
     }
 }
