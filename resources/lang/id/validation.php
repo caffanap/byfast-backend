@@ -147,8 +147,14 @@ return [
     */
 
     'attributes' => [
-        'name' => 'Nama',
-        'phone_number' => 'Nomor',
-        'image' => 'Gambar',
+        'name' => 'nama',
+        'phone_number' => 'nomor',
+        'image' => 'gambar',
+        'packet_category_id' => 'id kategori paket',
+        'description' => 'deskripsi',
+        'quota' => 'kuota',
+        'price' => 'harga',
+        'point_reward' => 'bonus poin',
+        'active_period' => 'masa aktif',
     ],
 ];

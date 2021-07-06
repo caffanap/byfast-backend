@@ -21,3 +21,5 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
     Route::post('refresh', 'AuthController@refresh');
     Route::get('me', 'AuthController@me');
 });
+
+Route::apiResource('paket', 'PacketController')->parameters(['paket' => 'packet']);
