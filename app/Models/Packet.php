@@ -15,4 +15,9 @@ class Packet extends Model
     {
         return $this->belongsTo(PacketCategory::class, 'packet_category_id');
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }
