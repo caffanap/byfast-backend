@@ -1,0 +1,16 @@
+/* ./resources/css/app.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .active-menu {
+      @apply text-pink-500 hover:text-pink-600 !important;
+    }
+    .dataTables_length select{
+      @apply text-xs py-1 pr-9 pl-3 !important;
+    }
+    .dataTables_filter input{
+      @apply text-xs py-1 px-3 !important;
+    }
+}

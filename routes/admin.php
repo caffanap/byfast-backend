@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\PacketController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
+Route::get('dashboard', function () {
+    return View::make('admin.template');
+})->name('dashboard');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('packets', PacketController::class);
