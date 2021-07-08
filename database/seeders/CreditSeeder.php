@@ -17,7 +17,7 @@ class CreditSeeder extends Seeder
         Credit::create([
             'user_id' => 1,
             'balance' => 100000,
-            'point' => 50,
+            'point'   => 10000,
         ]);
     }
 }

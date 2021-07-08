@@ -24,10 +24,22 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
 
 Route::group(['middleware' => 'api'], function () {
     // Home
-    Route::get('paket', 'MobileController@packet');
+    Route::get('paket', 'MobileController@packets');
     Route::get('pulsa/{user}', 'MobileController@credit');
     Route::get('paket-saya/ringkasan/{user}', 'MobileController@userPacketSummary');
     Route::get('banner', 'MobileController@banner');
 
+    // Paket Saya
     Route::get('paket-saya/detail/{user}', 'MobileController@userPacketDetail');
+
+    // Detail Paket
+    Route::get('paket/{packet}', 'MobileController@packet');
+    Route::get('topping', 'MobileController@toppings');
+    Route::get('poin-saya/{user}', 'MobileController@points');
+    Route::post('transaksi-baru/{user}', 'MobileController@buyPacket');
+
+    // Profil
+    Route::put('profile/{user}', 'MobileController@updateProfile');
+    Route::post('simulasi/{user}', 'MobileController@simulation');
+    Route::get('riwayat-pembelian/{user}', 'MobileController@purchasingHistory');
 });
