@@ -15,6 +15,8 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->foreignId('packet_id');
             $table->foreign('packet_id')->references('id')->on('packets')->cascadeOnDelete();
             $table->foreignId('topping_id')->nullable();
