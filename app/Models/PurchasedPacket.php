@@ -12,6 +12,8 @@ class PurchasedPacket extends Model
 
     protected $guarded = ['id'];
 
+    protected $date = ['active_period'];
+
     public function transaction()
     {
         return $this->belongsTo(Transaction::class);

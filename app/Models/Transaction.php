@@ -16,12 +16,12 @@ class Transaction extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function packets()
+    public function packet()
     {
         return $this->belongsTo(Packet::class);
     }
 
-    public function toppings()
+    public function topping()
     {
         return $this->belongsTo(Topping::class);
     }
