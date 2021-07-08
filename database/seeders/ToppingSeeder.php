@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Topping;
 use Illuminate\Database\Seeder;
 
 class ToppingSeeder extends Seeder
@@ -13,6 +14,12 @@ class ToppingSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Topping::create([
+            'name' => 'Kuota IG',
+            'description' => '10GB / 10 hari',
+            'quota' => '10000',
+            'price' => '10000',
+            'active_period' => '10',
+        ]);
     }
 }

@@ -15,8 +15,8 @@ class CreateCreditsTable extends Migration
     {
         Schema::create('credits', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('transaction_id');
-            $table->foreign('transaction_id')->references('id')->on('transactions')->cascadeOnDelete();
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->integer('balance');
             $table->integer('point');
             $table->timestamps();
