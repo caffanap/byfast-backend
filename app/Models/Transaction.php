@@ -30,4 +30,9 @@ class Transaction extends Model
     {
         return $this->hasOne(PurchasedPacket::class);
     }
+
+    public function purchasedTopping()
+    {
+        return $this->hasOne(PurchasedTopping::class);
+    }
 }

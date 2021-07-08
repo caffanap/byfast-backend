@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePurchasedPacketsTable extends Migration
+class CreatePurchasedToppingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePurchasedPacketsTable extends Migration
      */
     public function up()
     {
-        Schema::create('purchased_packets', function (Blueprint $table) {
+        Schema::create('purchased_toppings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('transaction_id');
             $table->foreign('transaction_id')->references('id')->on('transactions')->cascadeOnDelete();
@@ -32,6 +32,6 @@ class CreatePurchasedPacketsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchased_packets');
+        Schema::dropIfExists('purchased_toppings');
     }
 }
