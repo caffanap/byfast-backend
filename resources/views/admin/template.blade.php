@@ -120,6 +120,14 @@
                                 <i class="{{strpos(Route::currentRouteName(), 'admin.toppings') === 0 ? 'active-menu' : ''}} mr-2 text-sm text-gray-300 fas fa-tv"></i>
                                 Toppings
                             </a>
+                            <a href="{{ route('admin.banners.index') }}" class="{{strpos(Route::currentRouteName(), 'admin.banners') === 0 ? 'active-menu' : ''}} block py-3 text-xs font-bold text-gray-700 uppercase hover:text-gray-500">
+                                <i class="{{strpos(Route::currentRouteName(), 'admin.banners') === 0 ? 'active-menu' : ''}} mr-2 text-sm text-gray-300 fas fa-tv"></i>
+                                Banners
+                            </a>
+                            <a href="{{ route('admin.packet-categories.index') }}" class="{{strpos(Route::currentRouteName(), 'admin.packet-categories') === 0 ? 'active-menu' : ''}} block py-3 text-xs font-bold text-gray-700 uppercase hover:text-gray-500">
+                                <i class="{{strpos(Route::currentRouteName(), 'admin.packet-categories') === 0 ? 'active-menu' : ''}} mr-2 text-sm text-gray-300 fas fa-tv"></i>
+                                Packet Category
+                            </a>
                         </li>
 
                     </ul>

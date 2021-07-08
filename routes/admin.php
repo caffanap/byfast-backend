@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\PacketController;
 use App\Http\Controllers\Admin\ToppingController;
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\PacketCategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
@@ -24,3 +25,7 @@ Route::get('dashboard', function () {
 Route::resource('packets', PacketController::class);
 
 Route::resource('toppings', ToppingController::class);
+
+Route::resource('banners', BannerController::class)->only(['index', 'edit', 'update']);
+
+Route::resource('packet-categories', PacketCategoryController::class);

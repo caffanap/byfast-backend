@@ -21,7 +21,7 @@
                     <div class="w-full px-4 lg:w-6/12">
                         <div class="relative w-full mb-3">
                             <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600">
-                                Competency Unit
+                                Category
                             </label>
                             <select name="packet_category_id" id="" class="js-example-basic-multiple w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring">
                                 @foreach($packetCategories as $packetCategory)
