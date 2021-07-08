@@ -15,8 +15,11 @@ class CreatePurchasedToppingsTable extends Migration
     {
         Schema::create('purchased_toppings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->foreignId('transaction_id');
             $table->foreign('transaction_id')->references('id')->on('transactions')->cascadeOnDelete();
+            $table->enum('type', ['Instagram', 'Twitter', 'Youtube']);
             $table->integer('initial_quota');
             $table->integer('current_quota');
             $table->dateTime('active_period');

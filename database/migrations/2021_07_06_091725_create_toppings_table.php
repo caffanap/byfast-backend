@@ -17,6 +17,7 @@ class CreateToppingsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
+            $table->enum('type', ['Instagram', 'Twitter', 'Youtube']);
             $table->integer('price');
             $table->integer('quota'); // MB
             $table->integer('active_period'); // day

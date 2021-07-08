@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone_number');
+            $table->string('phone_number')->unique();
             $table->boolean('gender')->default(true);
             $table->dateTime('dob')->default('1970-01-01 00:00:00');
             $table->timestamp('email_verified_at')->default(Carbon::now());

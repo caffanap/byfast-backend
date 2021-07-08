@@ -17,6 +17,7 @@ class ToppingSeeder extends Seeder
         Topping::create([
             'name' => 'Kuota IG',
             'description' => '10GB / 10 hari',
+            'type' => 'Instagram',
             'quota' => '10000',
             'price' => '10000',
             'active_period' => '10',

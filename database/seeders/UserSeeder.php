@@ -24,5 +24,11 @@ class UserSeeder extends Seeder
             'email_verified_at' =>  now(),
             'password'          =>  Hash::make('123123123'),
         ]);
+
+        User::find(1)->update([
+            'name'              =>  'Kukuh Prastyono',
+            'email'             =>  'kukuh@gmail.com',
+            'phone_number'      =>  '0832154247976',
+        ]);
     }
 }
