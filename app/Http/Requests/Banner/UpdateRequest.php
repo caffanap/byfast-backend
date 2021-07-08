@@ -27,7 +27,7 @@ class UpdateRequest extends FormRequest
         return [
             'title'         => ['required'],
             'description'   => ['required'],
-            'image'         => ['required', 'mimes:jpg,png,jpeg', 'max:5048'],
+            'image'         => ['sometimes', 'mimes:jpg,png,jpeg', 'max:5048'],
         ];
     }
     public function validated()
