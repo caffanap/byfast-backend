@@ -7,7 +7,7 @@
             <div class="flex flex-wrap items-center">
                 <div class="flex justify-between relative w-full px-4 max-w-full flex-grow flex-1">
                     <h3 class="font-semibold text-lg text-blueGray-700">
-                        Schema
+                        Packet
                     </h3>
                     <a href="{{route('admin.packets.create')}}" class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150">
                         Add

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\PacketController;
+use App\Http\Controllers\Admin\ToppingController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
@@ -20,3 +22,5 @@ Route::get('dashboard', function () {
 })->name('dashboard');
 
 Route::resource('packets', PacketController::class);
+
+Route::resource('toppings', ToppingController::class);

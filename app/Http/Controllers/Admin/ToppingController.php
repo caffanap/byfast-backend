@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Packet\StoreRequest;
-use App\Models\Packet;
-use App\Models\PacketCategory;
+use App\Http\Requests\Topping\StoreRequest;
+use App\Models\Topping;
 use Illuminate\Http\Request;
 
-class PacketController extends Controller
+use function PHPUnit\Framework\returnSelf;
+
+class ToppingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +18,9 @@ class PacketController extends Controller
      */
     public function index()
     {
-        $packets = Packet::paginate(10);
+        $toppings = Topping::paginate(10);
 
-        return view('admin.packets.index', compact('packets'));
+        return view('admin.toppings.index', compact('toppings'));
     }
 
     /**
@@ -29,9 +30,7 @@ class PacketController extends Controller
      */
     public function create()
     {
-        $packetCategories = PacketCategory::all();
-
-        return view('admin.packets.create', compact('packetCategories'));
+        return view('admin.toppings.create');
     }
 
     /**
@@ -42,9 +41,9 @@ class PacketController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        Packet::create($request->validated());
+        Topping::create($request->validated());
 
-        return redirect()->route('admin.packets.index');
+        return redirect()->route('admin.toppings.index');
     }
 
     /**
@@ -53,9 +52,9 @@ class PacketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Packet $packet)
+    public function show(Topping $topping)
     {
-        return view('admin.packets.show', $packet);
+        return view('admin.toppings.show', $topping);
     }
 
     /**
@@ -64,11 +63,9 @@ class PacketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Packet $packet)
+    public function edit(Topping $topping)
     {
-        $packetCategories = PacketCategory::all();
-
-        return view('admin.packets.edit', compact('packet', 'packetCategories'));
+        return view('admin.toppings.edit', compact('topping'));
     }
 
     /**
@@ -78,11 +75,11 @@ class PacketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreRequest $request, Packet $packet)
+    public function update(StoreRequest $request, Topping $topping)
     {
-        $packet->update($request->validated());
+        $topping->update($request->validated());
 
-        return redirect()->route('admin.packets.index');
+        return redirect()->route('admin.toppings.index');
     }
 
     /**
@@ -91,10 +88,10 @@ class PacketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Packet $packet)
+    public function destroy(Topping $topping)
     {
-        $packet->delete();
+        $topping->delete();
 
-        return redirect()->route('admin.packets.index');
+        return redirect()->route('admin.toppings.index');
     }
 }

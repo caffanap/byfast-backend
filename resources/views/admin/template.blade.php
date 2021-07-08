@@ -116,6 +116,10 @@
                                 <i class="{{strpos(Route::currentRouteName(), 'admin.packets') === 0 ? 'active-menu' : ''}} mr-2 text-sm text-gray-300 fas fa-tv"></i>
                                 Packets
                             </a>
+                            <a href="{{ route('admin.toppings.index') }}" class="{{strpos(Route::currentRouteName(), 'admin.toppings') === 0 ? 'active-menu' : ''}} block py-3 text-xs font-bold text-gray-700 uppercase hover:text-gray-500">
+                                <i class="{{strpos(Route::currentRouteName(), 'admin.toppings') === 0 ? 'active-menu' : ''}} mr-2 text-sm text-gray-300 fas fa-tv"></i>
+                                Toppings
+                            </a>
                         </li>
 
                     </ul>
