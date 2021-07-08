@@ -21,12 +21,15 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $messages = ['email.unique' => 'Email telah terdaftar pada akun lain.'];
+        $messages = [
+            'email.unique' => 'Email telah terdaftar pada akun lain.',
+            'phone_number' => 'Nomor telah terdaftar pada akun lain.',
+        ];
         $validator = Validator::make($request->all(), [
             'name' => 'required|regex:/^[\pL\s\-]+$/u', // alpha & space
             'email' => 'required|email:rfc,dns|unique:users',
             'password' => 'required|min:8',
-            'phone_number' => 'required|numeric',
+            'phone_number' => 'required|numeric|unique:users',
         ], $messages);
 
         if ($validator->fails()) {
@@ -95,7 +98,10 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        $user = auth()->user();
+        $active_period = User::find($user['id'])->purchasedPacket()->first();
+        $user->active_period = $active_period->created_at->translatedFormat('d F Y, H:i') . ' WIB';
+        return response()->json($user);
     }
 
     /**

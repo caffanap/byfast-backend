@@ -22,4 +22,12 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
     Route::get('me', 'AuthController@me');
 });
 
-Route::apiResource('paket', 'PacketController')->parameters(['paket' => 'packet']);
+Route::group(['middleware' => 'api'], function () {
+    // Home
+    Route::get('paket', 'MobileController@packet');
+    Route::get('pulsa/{user}', 'MobileController@credit');
+    Route::get('paket-saya/ringkasan/{user}', 'MobileController@userPacketSummary');
+    Route::get('banner', 'MobileController@banner');
+
+    // Route::get('paket-saya/detail/{user}', 'MobileController@credit');
+});

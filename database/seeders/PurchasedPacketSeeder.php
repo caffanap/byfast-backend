@@ -16,6 +16,7 @@ class PurchasedPacketSeeder extends Seeder
     public function run()
     {
         PurchasedPacket::create([
+            'user_id' => 1,
             'transaction_id' => 1,
             'initial_quota' => 20000,
             'current_quota' => 20000,

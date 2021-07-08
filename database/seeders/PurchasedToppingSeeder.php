@@ -16,7 +16,9 @@ class PurchasedToppingSeeder extends Seeder
     public function run()
     {
         PurchasedTopping::create([
+            'user_id' => 1,
             'transaction_id' => 1,
+            'type' => 'Instagram',
             'initial_quota' => 10000,
             'current_quota' => 10000,
             'active_period' => Carbon::now()->addDays(10),
