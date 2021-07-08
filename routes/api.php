@@ -37,4 +37,9 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('topping', 'MobileController@toppings');
     Route::get('poin-saya/{user}', 'MobileController@points');
     Route::post('transaksi-baru/{user}', 'MobileController@buyPacket');
+
+    // Profil
+    Route::put('profile/{user}', 'MobileController@updateProfile');
+    Route::post('simulasi/{user}', 'MobileController@simulation');
+    Route::get('riwayat-pembelian/{user}', 'MobileController@purchasingHistory');
 });

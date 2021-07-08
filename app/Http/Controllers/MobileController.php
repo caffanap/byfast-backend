@@ -12,6 +12,7 @@ use App\Models\Topping;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Validator;
 
 class MobileController extends Controller
 {
@@ -184,5 +185,79 @@ class MobileController extends Controller
         return response()->json([
             'message' => 'Pembayaran berhasil'
         ]);
+    }
+
+    // Profile
+    public function updateProfile(User $user, Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name'   => 'required|min:8',
+            'email'  => 'required|email:rfc,dns|unique:users',
+            'gender' => 'required|boolean',
+            'dob'    => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => [
+                    'name' => $validator->errors()->first('name'),
+                    'email' => $validator->errors()->first('email'),
+                    'gender' => $validator->errors()->first('gender'),
+                    'dob' => $validator->errors()->first('dob'),
+                ],
+            ], 400);
+        }
+
+        $updated = $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'gender' => $request->gender,
+            'dob' => Carbon::parse($request->dob),
+        ]);
+
+        if ($updated) {
+            return response()->json([
+                'message' => 'Profil berhasil diubah.'
+            ]);
+        }
+        return response()->json([
+            'message' => 'Profil gagal diubah.'
+        ], 400);
+    }
+
+    public function simulation(User $user, Request $request)
+    {
+        $tester = [50, 100, 200, 500];
+        $rand = array_rand($tester);
+
+        if ($request->packet_id) {
+            $packet = PurchasedPacket::find($request->packet_id);
+            $packet->update([
+                'current_quota' => $packet->current_quota - $tester[$rand],
+            ]);
+        }
+
+        if ($request->topping_id) {
+            $topping = PurchasedTopping::find($request->topping_id);
+            $topping->update([
+                'current_quota' => $topping->current_quota - $tester[$rand],
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Simulasi pengurangan kuota sebesar ' . $tester[$rand] . ' MB berhasil.',
+        ]);
+    }
+
+    public function purchasingHistory(User $user)
+    {
+        $history = collect();
+
+        $purchasedPackets = $user->purchasedPackets()->get();
+        $purchasedToppings = $user->purchasedToppings()->get();
+
+        $history = $history->merge($purchasedPackets);
+        $history = $history->merge($purchasedToppings);
+        return $history;
     }
 }
