@@ -22,6 +22,11 @@ class MobileController extends Controller
         return PacketCategory::with('packets')->get();
     }
 
+    public function recommendedPackets()
+    {
+        return Packet::inRandomOrder()->limit(3)->get();
+    }
+
     public function credit(User $user)
     {
         return Credit::where('user_id', $user->id)->first();
@@ -38,14 +43,27 @@ class MobileController extends Controller
         $instagram = (!$instagram) ? 0 : $instagram->current_quota;
         $twitter = (!$twitter) ? 0 : $twitter->current_quota;
         $youtube = (!$youtube) ? 0 : $youtube->current_quota;
+
+
+
         return response()->json([
-            'internet' => $packet,
+            'internet' => $this->quotaConverter($packet),
             'call' => 0,
             'sms' => 0,
-            'instagram' => $instagram,
-            'twitter' => $twitter,
-            'youtube' => $youtube,
+            'instagram' => $this->quotaConverter($instagram),
+            'twitter' => $this->quotaConverter($twitter),
+            'youtube' => $this->quotaConverter($youtube),
         ]);
+    }
+
+    private function quotaConverter($quota)
+    {
+        if ($quota < 1000) {
+            return "$quota MB";
+        }
+
+        $quotaInGB = round($quota / 1000, 2);
+        return "$quotaInGB GB";
     }
 
     public function banner()
@@ -156,7 +174,7 @@ class MobileController extends Controller
 
         $credit->update([
             'balance' => $newBalance,
-            'point' => $newPoint,
+            'point' => $newPoint + $packet->point_reward,
         ]);
 
         $transaction = $user->transactions()->create([

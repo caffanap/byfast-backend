@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -33,14 +34,7 @@ class AuthController extends Controller
         ], $messages);
 
         if ($validator->fails()) {
-            return response()->json([
-                'errors' => [
-                    'name' => $validator->errors()->first('name'),
-                    'email' => $validator->errors()->first('email'),
-                    'password' => $validator->errors()->first('password'),
-                    'phone_number' => $validator->errors()->first('phone_number'),
-                ],
-            ], 400);
+            return response()->json($validator->errors()->all(), 400);
         }
 
         $createUser = User::create([
@@ -50,8 +44,16 @@ class AuthController extends Controller
             'phone_number' => $request->phone_number,
         ]);
 
+        $createUser->credit()->create([
+            'balance' => 0,
+            'point' => 0,
+        ]);
+
+        $credentials = ['phone_number' => $request->phone_number, 'password' => $request->password];
+
         if ($createUser) {
             return response()->json([
+                'token' => auth()->attempt($credentials),
                 'message' => 'Pendaftaran berhasil!',
             ], 201);
         } else {
@@ -99,8 +101,13 @@ class AuthController extends Controller
     public function me()
     {
         $user = auth()->user();
-        $active_period = User::find($user['id'])->purchasedPacket()->first();
-        $user->active_period = $active_period->created_at->translatedFormat('d F Y, H:i') . ' WIB';
+        $active_period = User::find($user['id'])->purchasedPackets()->first();
+        if ($active_period == null) {
+            $user->active_period = Carbon::now()->addDays(7)->translatedFormat('d F Y, H:i') . ' WIB';
+        } else {
+            $user->active_period = $active_period->created_at->translatedFormat('d F Y, H:i') . ' WIB';
+        }
+        $user->avatar = null;
         return response()->json($user);
     }
 

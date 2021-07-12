@@ -28,6 +28,7 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('pulsa/{user}', 'MobileController@credit');
     Route::get('paket-saya/ringkasan/{user}', 'MobileController@userPacketSummary');
     Route::get('banner', 'MobileController@banner');
+    Route::get('rekomendasi-paket', 'MobileController@recommendedPackets');
 
     // Paket Saya
     Route::get('paket-saya/detail/{user}', 'MobileController@userPacketDetail');
