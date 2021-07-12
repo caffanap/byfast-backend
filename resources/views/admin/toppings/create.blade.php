@@ -20,6 +20,21 @@
                     <div class="w-full px-4 lg:w-6/12">
                         <div class="relative w-full mb-3">
                             <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600">
+                                Type
+                            </label>
+                            <select name="type" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" >
+                                <option value="Instagram" @if(old('type') == 'Instagram') selected @endif>Instagram</option>
+                                <option value="Twitter" @if(old('type') == 'Twitter') selected @endif>Twitter</option>
+                                <option value="Youtube" @if(old('type') == 'Youtube') selected @endif>Youtube</option>
+                            </select>
+                            @error('type')
+                            <small class="text-pink-500">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="w-full px-4 lg:w-6/12">
+                        <div class="relative w-full mb-3">
+                            <label class="block mb-2 text-xs font-bold uppercase text-blueGray-600">
                                 Name
                             </label>
                             <input name="name" type="text" class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow placeholder-blueGray-300 text-blueGray-600 focus:outline-none focus:ring" value="{{ old('name') }}" placeholder="Name" />

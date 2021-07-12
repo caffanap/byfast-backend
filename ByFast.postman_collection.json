@@ -1,0 +1,443 @@
+{
+	"info": {
+		"_postman_id": "ac7d50e8-edd7-4864-8b7c-0f1005cecb46",
+		"name": "ByFast",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Agung\",\n    \"email\":\"agung@gmail.com\",\n    \"password\": \"password\",\n    \"phone_number\": \"0896534343\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base URL}}/api/auth/register",
+							"host": [
+								"{{Base URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"phone_number\": \"0832154247976\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base URL}}/api/auth/login",
+							"host": [
+								"{{Base URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Base URL}}/api/auth/me",
+							"host": [
+								"{{Base URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Paket",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/api/paket",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"api",
+						"paket"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paket (show)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/api/paket/1",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"api",
+						"paket",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pulsa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/api/pulsa/1",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"api",
+						"pulsa",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paket Saya Ringkasan",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Base URL}}/api/paket-saya/ringkasan/1",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"api",
+						"paket-saya",
+						"ringkasan",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Banner",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Base URL}}/api/banner",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"api",
+						"banner"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paket Saya Detail",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Base URL}}/api/paket-saya/detail/1",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"api",
+						"paket-saya",
+						"detail",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Topping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/api/topping",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"api",
+						"topping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Points",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/api/transaksi-baru/1",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"api",
+						"transaksi-baru",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Beli Paket",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"packet_id\": 1,\n    \"topping_id\": 1,\n    \"point\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base URL}}/api/transaksi-baru/1",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"api",
+						"transaksi-baru",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Profil",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Kukuh Prastyono 2\",\n    \"email\": \"kukuh@krustykrab.com\",\n    \"gender\": 1,\n    \"dob\": \"2000-03-10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base URL}}/api/profile/1",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"api",
+						"profile",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Simulasi",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"packet_id\": 1,\n    \"topping_id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base URL}}/api/simulasi/1",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"api",
+						"simulasi",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Riwayat Pembelian",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base URL}}/api/riwayat-pembelian/1",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"api",
+						"riwayat-pembelian",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Base URL",
+			"value": "http://sangar.xyz"
+		},
+		{
+			"key": "token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYyNTcwOTE1NSwiZXhwIjoxNjI1NzQ1MTU1LCJuYmYiOjE2MjU3MDkxNTUsImp0aSI6IklVRVhGVllqSDczemVzdkkiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ._XegUJRpKeOLFBvUDoZM_PXZg7PKla6gxK44AMWiE4k"
+		}
+	]
+}

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PacketController;
 use App\Http\Controllers\Admin\ToppingController;
 use App\Http\Controllers\Admin\PacketCategoryController;
@@ -18,9 +19,7 @@ use Illuminate\Support\Facades\View;
 |
 */
 
-Route::get('dashboard', function () {
-    return View::make('admin.template');
-})->name('dashboard');
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::resource('packets', PacketController::class);
 
