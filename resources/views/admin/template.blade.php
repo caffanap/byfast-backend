@@ -128,6 +128,10 @@
                                 <i class="{{strpos(Route::currentRouteName(), 'admin.packet-categories') === 0 ? 'active-menu' : ''}} mr-2 text-sm text-gray-300 fas fa-tv"></i>
                                 Packet Category
                             </a>
+                            <a href="{{ route('admin.credits.index') }}" class="{{strpos(Route::currentRouteName(), 'admin.credits') === 0 ? 'active-menu' : ''}} block py-3 text-xs font-bold text-gray-700 uppercase hover:text-gray-500">
+                                <i class="{{strpos(Route::currentRouteName(), 'admin.credits') === 0 ? 'active-menu' : ''}} mr-2 text-sm text-gray-300 fas fa-tv"></i>
+                                Credits
+                            </a>
                         </li>
 
                     </ul>

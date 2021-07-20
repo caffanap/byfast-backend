@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\CreditController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PacketController;
 use App\Http\Controllers\Admin\ToppingController;
@@ -28,3 +29,5 @@ Route::resource('toppings', ToppingController::class);
 Route::resource('banners', BannerController::class)->only(['index', 'edit', 'update']);
 
 Route::resource('packet-categories', PacketCategoryController::class);
+
+Route::resource('credits', CreditController::class)->only(['index', 'create', 'store']);
